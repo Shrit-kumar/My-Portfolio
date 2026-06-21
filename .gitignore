@@ -1,0 +1,26 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code settings
+.vscode/
+*.code-workspace
+
+# Log files
+*.log
+
+# Environment files
+.env
+.env.*
+
+# Node dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Personal files
+TODO.md
+images/README.md
+resume/README.md

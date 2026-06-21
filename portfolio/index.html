@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shrit Kumar | Full Stack Developer &amp; CSE Student</title>
+  <meta name="description"
+    content="Portfolio of Shrit Kumar, a B.Tech Computer Science Engineering student from Bhopal specializing in the MERN stack and Python. Explore projects, skills, certifications, and get in touch for internship opportunities.">
+  <meta name="keywords"
+    content="Shrit Kumar, Full Stack Developer, MERN Stack Developer, CSE Student, Portfolio, SISTec Bhopal, Python Developer, React Developer">
+  <meta name="author" content="Shrit Kumar">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0A0A0A">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Shrit Kumar | Full Stack Developer & CSE Student">
+  <meta property="og:description"
+    content="B.Tech CSE student building full-stack applications with the MERN stack and Python. Open to internship opportunities.">
+  <meta property="og:image" content="images/og-cover.png">
+  <meta property="og:url" content="https://shritkumar.dev">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Shrit Kumar | Full Stack Developer & CSE Student">
+  <meta name="twitter:description"
+    content="B.Tech CSE student building full-stack applications with the MERN stack and Python.">
+  <meta name="twitter:image" content="images/og-cover.png">
+
+  <link rel="canonical" href="https://shritkumar.dev">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Structured data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Shrit Kumar",
+    "jobTitle": "B.Tech Computer Science Engineering Student",
+    "url": "https://shritkumar.dev",
+    "sameAs": [
+      "https://github.com/yourusername",
+      "https://linkedin.com/in/yourusername"
+    ],
+    "knowsAbout": ["Full Stack Development", "MERN Stack", "Python", "C++", "Data Structures and Algorithms"]
+  }
+  </script>
+</head>
+
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Scroll progress indicator -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- Custom cursor glow -->
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar" id="navbar">
+    <nav class="nav-container" aria-label="Primary">
+      <a href="#home" class="logo" aria-label="Shrit Kumar home">Portfolio</a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active-link" data-section="home">Home</a></li>
+        <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+        <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
+        <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+        <li><a href="#education" class="nav-link" data-section="education">Education</a></li>
+        <li><a href="#certifications" class="nav-link" data-section="certifications">Certifications</a></li>
+        <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="resume/My Resume.pdf" class="btn btn-primary btn-sm" download>
+          Resume
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+        </a>
+
+        <button type="button" class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"
+          aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <canvas id="particles" class="particles-canvas"></canvas>
+      </div>
+
+      <div class="hero-container">
+        <div class="hero-left reveal">
+          <span class="eyebrow"><span class="dot-pulse"></span>Hello, I'm</span>
+          <h1 class="hero-title">Shrit <span class="gradient-text">Kumar</span></h1>
+
+          <p class="hero-role">
+            <span class="typed-text" id="typedText" aria-label="Role"></span><span class="type-cursor" id="typeCursor"
+              aria-hidden="true">|</span>
+          </p>
+
+          <p class="hero-desc">Passionate about building full-stack applications and solving real-world problems through
+            technology.</p>
+
+          <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="resume/My Resume.pdf" class="btn btn-outline" download>Download Resume</a>
+            <a href="#contact" class="btn btn-secondary">Hire Me</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-card">
+              <span class="stat-number" data-count="2" data-suffix="+">0</span>
+              <span class="stat-label">Projects</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number" data-count="4" data-suffix="+">0</span>
+              <span class="stat-label">Certifications</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number stat-static"><span class="dot-pulse dot-pulse-sm" aria-hidden="true"></span>Open
+                to</span>
+              <span class="stat-label">Internship</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right reveal" data-reveal-delay="150">
+          <div class="profile-card">
+            <div class="profile-glow" aria-hidden="true"></div>
+            <div class="">
+              <img style="background: radial-gradient(
+  circle,
+  #03030a 0%,
+  #010408 40%,
+  #000000 100%
+); border-radius: 30px;" id="profileImg" src="images/img.png"
+                alt="Shrit Kumar, B.Tech CSE student and full stack developer" width="300" height="350" loading="eager"
+                referrerpolicy="no-referrer" ,
+                onerror="this.onerror=null;this.closest('.profile-frame') && (this.style.display='none');">
+
+            </div>
+            <span class="profile-badge">Full Stack Dev</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-cue" aria-label="Scroll to About section">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </a>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+          <p class="section-subtitle">Get to know me better</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-cards reveal">
+            <div class="info-card">
+              <span class="info-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z" />
+                  <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                </svg>
+              </span>
+              <h3>B.Tech CSE Student</h3>
+              <p>SISTec Bhopal</p>
+            </div>
+            <div class="info-card">
+              <span class="info-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 1 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </span>
+              <h3>Bhopal, India</h3>
+              <p>Madhya Pradesh</p>
+            </div>
+            <div class="info-card">
+              <span class="info-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6" />
+                  <polyline points="8 6 2 12 8 18" />
+                </svg>
+              </span>
+              <h3>Full Stack Developer</h3>
+              <p>MERN &amp; Python</p>
+            </div>
+            <div class="info-card">
+              <span class="info-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                  <path d="M4.18 9.91A6.5 6.5 0 0 0 12 22a6.5 6.5 0 0 0 7.82-12.09" />
+                </svg>
+              </span>
+              <h3>Open for Internship</h3>
+              <p>Available Now</p>
+            </div>
+          </div>
+
+          <div class="about-text-card glass-card reveal" data-reveal-delay="150">
+            <h3>Who I Am</h3>
+            <p>I'm a Computer Science Engineering student with a strong foundation in C++, Data Structures &amp;
+              Algorithms, the MERN stack, Python, and problem-solving. I enjoy turning complex problems into clean,
+              user-focused solutions.</p>
+            <p>Currently pursuing my B.Tech at SISTec Bhopal (2023–2027), I build projects that bridge the gap between
+              theory and real-world application — from responsive interfaces with React and Tailwind CSS to backend
+              systems powered by Node.js, Express, and Flask.</p>
+            <p>When I'm not coding, I'm exploring new technologies, working on side projects, or sharpening my DSA
+              skills. I'm actively looking for internship opportunities where I can contribute, learn, and grow as a
+              developer.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">Skills &amp; <span class="gradient-text">Expertise</span></h2>
+          <p class="section-subtitle">Technologies and tools I work with on a daily basis</p>
+        </div>
+
+        <div class="bento-grid">
+
+          <div class="skill-card reveal">
+            <span class="skill-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="4 17 10 11 4 5" />
+                <line x1="12" y1="19" x2="20" y2="19" />
+              </svg>
+            </span>
+            <h3>Programming</h3>
+            <ul class="skill-list">
+              <li class="skill-row" data-percent="85">
+                <div class="skill-row-top"><span>C++</span><span class="skill-pct">85%</span></div>
+                <div class="skill-track">
+                  <div class="skill-fill"></div>
+                </div>
+              </li>
+              <li class="skill-row" data-percent="70">
+                <div class="skill-row-top"><span>Java</span><span class="skill-pct">70%</span></div>
+                <div class="skill-track">
+                  <div class="skill-fill"></div>
+                </div>
+              </li>
+              <li class="skill-row" data-percent="80">
+                <div class="skill-row-top"><span>Python</span><span class="skill-pct">80%</span></div>
+                <div class="skill-track">
+                  <div class="skill-fill"></div>
+                </div>
+              </li>
+              <li class="skill-row" data-percent="82">
+                <div class="skill-row-top"><span>JavaScript</span><span class="skill-pct">82%</span></div>
+                <div class="skill-track">
+                  <div class="skill-fill"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="skill-card reveal" data-reveal-delay="80">
+            <span class="skill-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <line x1="3" y1="9" x2="21" y2="9" />
+                <line x1="9" y1="21" x2="9" y2="9" />
+              </svg>
+            </span>
+            <h3>Frontend</h3>
+            <ul class="skill-list">
+              <li class="skill-row" data-percent="90">
+                <div class="skill-row-top"><span>HTML</span><span class="skill-pct">90%</span></div>
+                <div class="skill-track">
+                  <div class="skill-fill"></div>
+                </div>
+              </li>
+              <li class="skill-row" data-percent="85">
+                <div class="skill-row-top"><span>CSS</span><span class="skill-pct">85%</span></div>
+                <div class="skill-track">
+                  <div class="skill-fill"></div>
+                </div>
+              </li>
+              <li class="skill-row" data-percent="78">
+                <div class="skill-row-top"><span>React.js</span><span class="skill-pct">78%</span></div>
+                <div class="skill-track">
+                  <div class="skill-fill"></div>
+                </div>
+              </li>
+              <li class="skill-row" data-percent="80">
+                <div class="skill-row-top"><span>Tailwind CSS</span><span class="skill-pct">80%</span></div>
+                <div class="skill-track">
+                  <div class="skill-fill"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="skill-card reveal" data-reveal-delay="160">
+            <span class="skill-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="8" rx="2" />
+                <rect x="2" y="14" width="20" height="8" rx="2" />
+                <line x1="6" y1="6" x2="6" y2="6" />
+                <line x1="6" y1="18" x2="6" y2="18" />
+              </svg>
+            </span>
+            <h3>Backend</h3>
+            <ul class="skill-list">
+              <li class="skill-row" data-percent="75">
+                <div class="skill-row-top"><span>Node.js</span><span class="skill-pct">75%</span></div>
+                <div class="skill-track">
+                  <div class="skill-fill"></div>
+                </div>
+              </li>
+              <li class="skill-row" data-percent="72">
+                <div class="skill-row-top"><span>Express.js</span><span class="skill-pct">72%</span></div>
+                <div class="skill-track">
+                  <div class="skill-fill"></div>
+                </div>
+              </li>
+              <li class="skill-row" data-percent="68">
+                <div class="skill-row-top"><span>Flask</span><span class="skill-pct">68%</span></div>
+                <div class="skill-track">
+                  <div class="skill-fill"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="skill-card reveal">
+            <span class="skill-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="5" rx="9" ry="3" />
+                <path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5" />
+                <path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3" />
+              </svg>
+            </span>
+            <h3>Database</h3>
+            <ul class="skill-list">
+              <li class="skill-row" data-percent="74">
+                <div class="skill-row-top"><span>MongoDB</span><span class="skill-pct">74%</span></div>
+                <div class="skill-track">
+                  <div class="skill-fill"></div>
+                </div>
+              </li>
+              <li class="skill-row" data-percent="70">
+                <div class="skill-row-top"><span>Firebase</span><span class="skill-pct">70%</span></div>
+                <div class="skill-track">
+                  <div class="skill-fill"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="skill-card reveal" data-reveal-delay="80">
+            <span class="skill-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+              </svg>
+            </span>
+            <h3>Tools</h3>
+            <ul class="skill-list">
+              <li class="skill-row" data-percent="80">
+                <div class="skill-row-top"><span>Git</span><span class="skill-pct">80%</span></div>
+                <div class="skill-track">
+                  <div class="skill-fill"></div>
+                </div>
+              </li>
+              <li class="skill-row" data-percent="82">
+                <div class="skill-row-top"><span>GitHub</span><span class="skill-pct">82%</span></div>
+                <div class="skill-track">
+                  <div class="skill-fill"></div>
+                </div>
+              </li>
+              <li class="skill-row" data-percent="75">
+                <div class="skill-row-top"><span>Postman</span><span class="skill-pct">75%</span></div>
+                <div class="skill-track">
+                  <div class="skill-fill"></div>
+                </div>
+              </li>
+              <li class="skill-row" data-percent="88">
+                <div class="skill-row-top"><span>VS Code</span><span class="skill-pct">88%</span></div>
+                <div class="skill-track">
+                  <div class="skill-fill"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="skill-card reveal" data-reveal-delay="160">
+            <span class="skill-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="2" y1="12" x2="22" y2="12" />
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+              </svg>
+            </span>
+            <h3>Networking</h3>
+            <ul class="skill-list">
+              <li class="skill-row" data-percent="75">
+                <div class="skill-row-top"><span>IPv4 &amp; IPv6</span><span class="skill-pct">75%</span></div>
+                <div class="skill-track">
+                  <div class="skill-fill"></div>
+                </div>
+              </li>
+              <li class="skill-row" data-percent="70">
+                <div class="skill-row-top"><span>Router Configuration</span><span class="skill-pct">70%</span></div>
+                <div class="skill-track">
+                  <div class="skill-fill"></div>
+                </div>
+              </li>
+              <li class="skill-row" data-percent="78">
+                <div class="skill-row-top"><span>OSI Model</span><span class="skill-pct">78%</span></div>
+                <div class="skill-track">
+                  <div class="skill-fill"></div>
+                </div>
+              </li>
+              <li class="skill-row" data-percent="72">
+                <div class="skill-row-top"><span>Ethernet Protocols</span><span class="skill-pct">72%</span></div>
+                <div class="skill-track">
+                  <div class="skill-fill"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+          <p class="section-subtitle">Real-world applications I've built to solve meaningful problems</p>
+        </div>
+
+        <div class="projects-grid">
+
+          <article class="project-card reveal" data-tilt>
+            <div class="project-thumb">
+              <svg viewBox="0 0 480 280" class="thumb-svg" aria-hidden="true">
+                <defs>
+                  <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#16321f" />
+                    <stop offset="100%" stop-color="#0a0a0a" />
+                  </linearGradient>
+                </defs>
+                <rect width="480" height="280" fill="url(#g1)" />
+                <rect x="24" y="24" width="220" height="100" rx="10" fill="#10241a" stroke="#22c55e33" />
+                <polyline points="34,100 70,70 110,90 150,50 190,65 230,40" fill="none" stroke="#22c55e"
+                  stroke-width="3" />
+                <rect x="256" y="24" width="200" height="100" rx="10" fill="#10241a" stroke="#22c55e33" />
+                <rect x="270" y="70" width="14" height="40" fill="#22c55e" />
+                <rect x="294" y="55" width="14" height="55" fill="#3B82F6" />
+                <rect x="318" y="80" width="14" height="30" fill="#22c55e" />
+                <rect x="342" y="40" width="14" height="70" fill="#3B82F6" />
+                <rect x="366" y="60" width="14" height="50" fill="#22c55e" />
+                <rect x="24" y="138" width="432" height="118" rx="10" fill="#10241a" stroke="#22c55e33" />
+                <circle cx="100" cy="197" r="36" fill="none" stroke="#22c55e" stroke-width="10"
+                  stroke-dasharray="170 226" />
+                <circle cx="240" cy="197" r="36" fill="none" stroke="#3B82F6" stroke-width="10"
+                  stroke-dasharray="120 226" />
+                <circle cx="380" cy="197" r="36" fill="none" stroke="#8B5CF6" stroke-width="10"
+                  stroke-dasharray="90 226" />
+              </svg>
+              <span class="thumb-tag">🌿 AgriTech</span>
+            </div>
+            <div class="project-body">
+              <h3>PlantGuard</h3>
+              <p class="project-tagline">AI-Based Crop Disease Advisory System</p>
+              <div class="tag-row">
+                <span class="tag">React</span><span class="tag">Flask</span><span class="tag">Python</span><span
+                  class="tag">Firebase</span><span class="tag">Tailwind CSS</span>
+              </div>
+              <ul class="feature-list">
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="8 12 11 15 16 9" />
+                  </svg>Disease Detection</li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="8 12 11 15 16 9" />
+                  </svg>Treatment Suggestions</li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="8 12 11 15 16 9" />
+                  </svg>User Authentication</li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="8 12 11 15 16 9" />
+                  </svg>User History Tracking</li>
+              </ul>
+              <div class="project-links">
+                <a href="#" class="btn btn-outline btn-sm">GitHub</a>
+                <a href="#" class="btn btn-primary btn-sm">Live Demo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-reveal-delay="120" data-tilt>
+            <div class="project-thumb">
+              <svg viewBox="0 0 480 280" class="thumb-svg" aria-hidden="true">
+                <defs>
+                  <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#1d1b3a" />
+                    <stop offset="100%" stop-color="#0a0a0a" />
+                  </linearGradient>
+                </defs>
+                <rect width="480" height="280" fill="url(#g2)" />
+                <rect x="24" y="24" width="432" height="56" rx="10" fill="#181536" stroke="#8B5CF633" />
+                <circle cx="50" cy="52" r="14" fill="#3B82F6" />
+                <circle cx="86" cy="52" r="14" fill="#8B5CF6" />
+                <circle cx="122" cy="52" r="14" fill="#3B82F6" />
+                <rect x="24" y="96" width="138" height="160" rx="10" fill="#181536" stroke="#8B5CF633" />
+                <rect x="174" y="96" width="138" height="160" rx="10" fill="#181536" stroke="#8B5CF633" />
+                <rect x="324" y="96" width="132" height="160" rx="10" fill="#181536" stroke="#8B5CF633" />
+                <rect x="36" y="112" width="114" height="10" rx="4" fill="#3B82F6" />
+                <rect x="36" y="132" width="80" height="8" rx="3" fill="#34406b" />
+                <rect x="36" y="148" width="100" height="8" rx="3" fill="#34406b" />
+                <rect x="186" y="112" width="114" height="10" rx="4" fill="#8B5CF6" />
+                <rect x="186" y="132" width="70" height="8" rx="3" fill="#34406b" />
+                <rect x="186" y="148" width="95" height="8" rx="3" fill="#34406b" />
+                <rect x="336" y="112" width="108" height="10" rx="4" fill="#3B82F6" />
+                <rect x="336" y="132" width="60" height="8" rx="3" fill="#34406b" />
+              </svg>
+              <span class="thumb-tag">⚙️ Productivity</span>
+            </div>
+            <div class="project-body">
+              <h3>Smart Task Distributor</h3>
+              <p class="project-tagline">AI-Based Smart Project Task Distribution System</p>
+              <div class="tag-row">
+                <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span
+                  class="tag">MongoDB</span><span class="tag">Python</span><span class="tag">Flask</span>
+              </div>
+              <ul class="feature-list">
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="8 12 11 15 16 9" />
+                  </svg>AI-based Task Assignment</li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="8 12 11 15 16 9" />
+                  </svg>Employee Skill Tracking</li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="8 12 11 15 16 9" />
+                  </svg>Project Progress Dashboard</li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="8 12 11 15 16 9" />
+                  </svg>Role-based Modules</li>
+              </ul>
+              <div class="project-links">
+                <a href="#" class="btn btn-outline btn-sm">GitHub</a>
+                <a href="#" class="btn btn-primary btn-sm">Live Demo</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EDUCATION ============ -->
+    <section class="section" id="education">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">My <span class="gradient-text">Education</span></h2>
+          <p class="section-subtitle">Academic journey and qualifications</p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-line" aria-hidden="true"></div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-card glass-card">
+              <span class="timeline-badge">2023 – 2027</span>
+              <h3>B.Tech in Computer Science &amp; Engineering</h3>
+              <p class="timeline-org">SISTec Bhopal</p>
+              <p class="timeline-score">CGPA: 6.79</p>
+            </div>
+            <span class="timeline-dot">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z" />
+                <path d="M6 12v5c3 3 9 3 12 0v-5" />
+              </svg>
+            </span>
+            <div class="timeline-spacer"></div>
+          </div>
+
+          <div class="timeline-item timeline-item-reverse reveal" data-reveal-delay="120">
+            <div class="timeline-spacer"></div>
+            <span class="timeline-dot timeline-dot-alt">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+              </svg>
+            </span>
+            <div class="timeline-card glass-card">
+              <span class="timeline-badge">2023</span>
+              <h3>Class XII (Senior Secondary)</h3>
+              <p class="timeline-org">Bihar School Examination Board (BSEB)</p>
+              <p class="timeline-score">64%</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal" data-reveal-delay="240">
+            <div class="timeline-card glass-card">
+              <span class="timeline-badge">2021</span>
+              <h3>Class X (Secondary)</h3>
+              <p class="timeline-org">Central Board of Secondary Education (CBSE)</p>
+              <p class="timeline-score">68.8%</p>
+            </div>
+            <span class="timeline-dot">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M4.18 9.91A6.5 6.5 0 0 0 12 22a6.5 6.5 0 0 0 7.82-12.09" />
+              </svg>
+            </span>
+            <div class="timeline-spacer"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CERTIFICATIONS ============ -->
+    <section class="section" id="certifications">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">My <span class="gradient-text">Certifications</span></h2>
+          <p class="section-subtitle">Professional credentials and achievements</p>
+        </div>
+
+        <div class="cert-grid">
+          <div class="cert-card reveal">
+            <span class="cert-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+              </svg>
+            </span>
+            <h3>Frontend Web Development</h3>
+            <p>Infosys</p>
+          </div>
+          <div class="cert-card reveal" data-reveal-delay="80">
+            <span class="cert-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12.55a11 11 0 0 1 14.08 0" />
+                <path d="M1.42 9a16 16 0 0 1 21.16 0" />
+                <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
+                <line x1="12" y1="20" x2="12" y2="20" />
+              </svg>
+            </span>
+            <h3>CCNA: Introduction to Networks</h3>
+            <p>Cisco</p>
+          </div>
+          <div class="cert-card reveal" data-reveal-delay="160">
+            <span class="cert-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                <polyline points="2 17 12 22 22 17" />
+                <polyline points="2 12 12 17 22 12" />
+              </svg>
+            </span>
+            <h3>MERN Full Stack Development</h3>
+            <p>Training Program</p>
+          </div>
+          <div class="cert-card reveal" data-reveal-delay="240">
+            <span class="cert-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="4 17 10 11 4 5" />
+                <line x1="12" y1="19" x2="20" y2="19" />
+              </svg>
+            </span>
+            <h3>C &amp; C++ Programming</h3>
+            <p>Training Program</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INTERNSHIP CTA ============ -->
+    <section class="section internship-section">
+      <div class="container">
+        <div class="internship-card glass-card reveal">
+          <div class="internship-glow" aria-hidden="true"></div>
+          <h2>Open to Internship Opportunities</h2>
+          <p>I'm currently looking for internship roles in:</p>
+          <div class="role-chips">
+            <span class="chip">Software Development</span>
+            <span class="chip">Full Stack Development</span>
+            <span class="chip">Web Development</span>
+          </div>
+          <a href="#contact" class="btn btn-primary btn-lg">Hire Me</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+          <p class="section-subtitle">Have a question or opportunity? Let's connect!</p>
+        </div>
+
+        <div class="contact-grid">
+          <form class="contact-form glass-card reveal" id="contactForm" novalidate>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required>
+              <span class="form-error" id="nameError"></span>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+              <span class="form-error" id="emailError"></span>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" maxlength="500"
+                placeholder="Tell me about your project or opportunity..." required></textarea>
+              <div class="char-count"><span id="charCount">0</span>/500 characters</div>
+              <span class="form-error" id="messageError"></span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+              <span>Send Message</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+              </svg>
+            </button>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="contact-side reveal" data-reveal-delay="150">
+            <div class="glass-card connect-card">
+              <h3>Connect With Me</h3>
+              <a href="https://github.com/Shrit-kumar" class="connect-row" target="_blank" rel="noopener noreferrer">
+                <span class="connect-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.01 3.29 9.26 7.86 10.76.58.1.79-.25.79-.56 0-.27-.01-1.18-.02-2.13-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.74.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.07.78 2.16 0 1.56-.01 2.81-.01 3.19 0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12c0-6.28-5.23-11.5-11.5-11.5z" />
+                  </svg></span>
+                <span>GitHub</span>
+              </a>
+              <a href="https://www.linkedin.com/in/shritkumar?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                class="connect-row" target="_blank" rel="noopener noreferrer">
+                <span class="connect-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.13 1.45-2.13 2.94v5.66H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
+                  </svg></span>
+                <span>LinkedIn</span>
+              </a>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shritnayak2005@gmail.com" target="_blank"
+                class="connect-row">
+                <span class="connect-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <path d="m2 6 8.9 6.2a2 2 0 0 0 2.2 0L22 6" />
+                  </svg></span>
+                <span>Email</span>
+              </a>
+              <a href="https://maps.google.com/?q=Bhopal,India" class="connect-row" target="_blank"
+                rel="noopener noreferrer">
+                <span class="connect-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 1 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg></span>
+                <span>Bhopal, India</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#home" class="logo">Portfolio</a>
+        <p>Building modern web experiences with passion and precision. Open to opportunities and collaborations.</p>
+      </div>
+      <div class="footer-link-columns">
+        <ul class="footer-links">
+          <li class="footer-links-title">Quick Links</li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#education">Education</a></li>
+        </ul>
+
+        <ul class="footer-links">
+          <li class="footer-links-title">Resources</li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#internship">Internship</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-socials">
+        <a href="https://github.com/Shrit-kumar" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.01 3.29 9.26 7.86 10.76.58.1.79-.25.79-.56 0-.27-.01-1.18-.02-2.13-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.74.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.07.78 2.16 0 1.56-.01 2.81-.01 3.19 0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12c0-6.28-5.23-11.5-11.5-11.5z" />
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/shritkumar?utm_source=share_via&utm_content=profile&utm_medium=member_android" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.13 1.45-2.13 2.94v5.66H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
+          </svg>
+        </a>
+        <a  href="https://mail.google.com/mail/?view=cm&fs=1&to=shritnayak2005@gmail.com" aria-label="Email">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="m2 6 8.9 6.2a2 2 0 0 0 2.2 0L22 6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Shrit Kumar</p>
+    </div>
+  </footer>
+
+  <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="19" x2="12" y2="5" />
+      <polyline points="5 12 12 5 19 12" />
+    </svg>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
