@@ -211,18 +211,29 @@
   function animateCount(el) {
     const target = parseInt(el.dataset.count, 10) || 0;
     const suffix = el.dataset.suffix || '';
+
+    // Respect reduced motion.
     if (prefersReducedMotion || target <= 1) {
       el.textContent = target + suffix;
       return;
     }
+
+    // Optimized counter animation to avoid lag on larger numbers.
+    // - increment = Math.ceil(target / 40)
+    // - constant 20ms interval
+    // - clamps to target
+    const increment = Math.ceil(target / 40);
+    const interval = 20;
+
     let current = 0;
-    const duration = 700;
-    const stepTime = duration / target;
-    const interval = setInterval(() => {
-      current++;
+    const timerId = window.setInterval(() => {
+      current = Math.min(target, current + increment);
       el.textContent = current + suffix;
-      if (current >= target) clearInterval(interval);
-    }, stepTime);
+
+      if (current >= target) {
+        window.clearInterval(timerId);
+      }
+    }, interval);
   }
 
   /* ---------- 8. Cursor glow ---------- */
@@ -242,6 +253,10 @@
   /* ---------- 9. Hero particles (lightweight canvas) ---------- */
   const canvas = document.getElementById('particles');
   if (canvas && !prefersReducedMotion) {
+    // Disable particles on small devices for better performance.
+    if (window.innerWidth < 768) {
+      return;
+    }
     const ctx = canvas.getContext('2d');
     let particles = [];
     let animId = null;
@@ -288,9 +303,15 @@
     createParticles();
     draw();
 
+    let resizeTimer;
+
+    // Debounce resize events to avoid heavy particle recalculation.
     window.addEventListener('resize', () => {
-      resize();
-      createParticles();
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        resize();
+        createParticles();
+      }, 150);
     });
 
     document.addEventListener('visibilitychange', () => {
@@ -325,14 +346,23 @@
   }
 
 
-  /* ---------- 12. Contact form ---------- */
+  /* ---------- 12. Contact form (EmailJS submission only) ---------- */
   const contactForm = document.getElementById('contactForm');
   const messageInput = document.getElementById('message');
   const charCount = document.getElementById('charCount');
 
+  // Keep only the character counter logic.
   if (messageInput && charCount) {
     messageInput.addEventListener('input', () => {
       charCount.textContent = messageInput.value.length;
+    });
+  }
+
+  // EmailJS init + submit logic must be safe for production/deployment.
+  // (emailjs is loaded via CDN with `defer` in index.html)
+  if (window.emailjs) {
+    window.emailjs.init({
+      publicKey: 'vPNPgABmCspF18dy0',
     });
   }
 
@@ -349,9 +379,17 @@
       const status = document.getElementById('formStatus');
       const submitBtn = document.getElementById('submitBtn');
 
+      // Defensive null checks for production safety.
+      if (!nameEl || !emailEl || !msgEl || !nameError || !emailError || !messageError || !status || !submitBtn) {
+        return;
+      }
+
       let valid = true;
 
-      [nameEl, emailEl, msgEl].forEach((el) => el.closest('.form-group').classList.remove('has-error'));
+      [nameEl, emailEl, msgEl].forEach((el) => {
+        const grp = el.closest('.form-group');
+        if (grp) grp.classList.remove('has-error');
+      });
       nameError.textContent = '';
       emailError.textContent = '';
       messageError.textContent = '';
@@ -360,51 +398,95 @@
 
       if (!nameEl.value.trim()) {
         nameError.textContent = 'Please enter your name.';
-        nameEl.closest('.form-group').classList.add('has-error');
+        const grp = nameEl.closest('.form-group');
+        if (grp) grp.classList.add('has-error');
         valid = false;
       }
 
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      // Improve email validation regex.
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
       if (!emailPattern.test(emailEl.value.trim())) {
         emailError.textContent = 'Please enter a valid email address.';
-        emailEl.closest('.form-group').classList.add('has-error');
+        const grp = emailEl.closest('.form-group');
+        if (grp) grp.classList.add('has-error');
         valid = false;
       }
 
-      if (!msgEl.value.trim()) {
-        messageError.textContent = 'Please write a short message.';
-        msgEl.closest('.form-group').classList.add('has-error');
+      // Message validation (minimum length: 10 chars)
+      if (msgEl.value.trim().length < 10) {
+        messageError.textContent = 'Message must be at least 10 characters.';
+        const grp = msgEl.closest('.form-group');
+        if (grp) grp.classList.add('has-error');
         valid = false;
       }
 
       if (!valid) return;
 
-      // NOTE: This form is front-end only. To actually receive messages,
-      // connect it to a service like Formspree, EmailJS, or your own backend
-      // and replace this block with the real submission call.
+      if (!window.emailjs) {
+        // If EmailJS failed to load, fail gracefully.
+        status.textContent = '❌ Email service is not available right now.';
+        status.classList.add('error');
+        return;
+      }
+
       submitBtn.disabled = true;
       status.textContent = 'Sending...';
 
-      setTimeout(() => {
-        status.textContent = 'Thanks! Your message has been noted — I will get back to you soon.';
-        status.classList.add('success');
-        contactForm.reset();
-        if (charCount) charCount.textContent = '0';
-        submitBtn.disabled = false;
-      }, 900);
+      const templateParams = {
+        name: nameEl.value.trim(),
+        email: emailEl.value.trim(),
+        message: msgEl.value.trim(),
+        time: new Date().toLocaleString(),
+        title: 'Portfolio Contact Form',
+      };
+
+      window.emailjs
+        .send('service_kglz7es', 'template_q3v03fa', templateParams)
+        .then(() => {
+          status.textContent = '✅ Message sent successfully!';
+          status.classList.add('success');
+          contactForm.reset();
+
+          // Safe charCount reset.
+          const count = document.getElementById('charCount');
+          if (count) count.textContent = '0';
+        })
+        .catch((error) => {
+          // Keep console logging in production for debugging.
+          // But avoid breaking UI.
+          // eslint-disable-next-line no-console
+          console.error(error);
+          status.textContent = '❌ Failed to send message.';
+          status.classList.add('error');
+        })
+        .finally(() => {
+          submitBtn.disabled = false;
+        });
     });
   }
 
   /* ---------- 13. Image fallback for missing profile photo ---------- */
   const profileImg = document.getElementById('profileImg');
+
+  // Footer year (must be at end of the script for reliable DOM init).
+  const year = document.getElementById('year');
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
   if (profileImg) {
     profileImg.addEventListener('error', () => {
       const frame = profileImg.closest('.profile-frame');
       if (!frame) return;
-      profileImg.remove();
+
+      // Do NOT remove the image element from DOM (prevents layout/JS inconsistencies).
+      profileImg.style.display = 'none';
+
+      // Insert fallback only once.
+      if (frame.querySelector('[data-profile-fallback]')) return;
+
       frame.insertAdjacentHTML(
         'beforeend',
-        `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+        `<div data-profile-fallback="true" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;
             background:linear-gradient(135deg, rgba(59,130,246,0.18), rgba(139,92,246,0.18));
             font-family:'Space Grotesk',sans-serif;font-size:4rem;font-weight:700;
             color:rgba(255,255,255,0.85);">SK</div>`
@@ -412,46 +494,10 @@
     });
   }
 
+
+// NOTE: EmailJS + contact form logic lives inside the IIFE above.
+// (Removed duplicate/extra global handlers to prevent double submissions.)
+
 })();
 
-emailjs.init({
-  publicKey: "vPNPgABmCspF18dy0",
-});
 
-const contactForm = document.getElementById("contactForm");
-const formStatus = document.getElementById("formStatus");
-const submitBtn = document.getElementById("submitBtn");
-
-contactForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  submitBtn.disabled = true;
-  formStatus.textContent = "Sending...";
-
-  const templateParams = {
-    name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
-    message: document.getElementById("message").value,
-    time: new Date().toLocaleString(),
-    title: "Portfolio Contact Form"
-  };
-
-  emailjs
-    .send(
-      "service_kglz7es",
-      "template_q3v03fa",
-      templateParams
-    )
-    .then(() => {
-      formStatus.textContent = "✅ Message sent successfully!";
-      contactForm.reset();
-      document.getElementById("charCount").textContent = "0";
-    })
-    .catch((error) => {
-      console.error(error);
-      formStatus.textContent = "❌ Failed to send message.";
-    })
-    .finally(() => {
-      submitBtn.disabled = false;
-    });
-});
