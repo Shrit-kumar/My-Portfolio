@@ -1568,14 +1568,18 @@ li {
   transform: translateY(16px);
   pointer-events: none;
   transition: opacity 0.3s ease, transform 0.3s ease;
-  z-index: 900;
+  z-index: 2001;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
+
 
 .back-to-top.visible {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
+
 
 /* =========================================================
    RESPONSIVE

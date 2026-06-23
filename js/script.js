@@ -339,14 +339,58 @@
   }
 
   /* ---------- 11. Back to top ---------- */
+  function scrollToTop() {
+    // Required smooth + fallback methods
+    try {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: prefersReducedMotion ? 'auto' : 'smooth',
+      });
+    } catch (e) {
+      // Ignore and fallback to non-options API below
+    }
+
+    // Fallback scrolling methods for mobile browsers / edge cases
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }
+
   if (backToTop) {
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
-    });
+    let touchLock = false;
+
+    // Prevent click-after-touch double firing
+    const onTouchStart = (e) => {
+      touchLock = true;
+      // Stop other handlers from stealing the touch
+      e.preventDefault?.();
+      e.stopPropagation?.();
+    };
+
+    const onTouchEnd = (e) => {
+      e.preventDefault?.();
+      e.stopPropagation?.();
+
+      // Only handle once per touch interaction
+      if (!touchLock) return;
+      touchLock = false;
+      scrollToTop();
+    };
+
+    const onClick = (e) => {
+      // If touch just happened, ignore the click
+      if (touchLock) return;
+      scrollToTop();
+    };
+
+    backToTop.addEventListener('click', onClick);
+    backToTop.addEventListener('touchstart', onTouchStart, { passive: false });
+    backToTop.addEventListener('touchend', onTouchEnd, { passive: false });
   }
 
 
   /* ---------- 12. Contact form (EmailJS submission only) ---------- */
+
   const contactForm = document.getElementById('contactForm');
   const messageInput = document.getElementById('message');
   const charCount = document.getElementById('charCount');
